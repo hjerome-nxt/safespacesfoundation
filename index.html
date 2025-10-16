@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Spaces Foundation | Mental Health For All</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            background: #FAFAFA;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .logo-main {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2E5B7A;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            color: #6B7280;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #4B5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2E5B7A;
+        }
+
+        .btn-primary {
+            background: #2E5B7A;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #234659;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 91, 122, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2E5B7A 0%, #7FB069 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2E5B7A;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: 2px solid white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: #7FB069;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #6B7280;
+            font-size: 1.1rem;
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, #FAFAFA, white);
+        }
+
+        .mission-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mission h2 {
+            font-size: 2.5rem;
+            color: #2E5B7A;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .mission p {
+            font-size: 1.15rem;
+            color: #4B5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Focus Areas */
+        .focus-areas {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .focus-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .focus-container h2 {
+            font-size: 2.5rem;
+            color: #2E5B7A;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .focus-card {
+            background: #FAFAFA;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #7FB069;
+            transition: all 0.3s;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .focus-card h3 {
+            color: #2E5B7A;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .focus-card p {
+            color: #4B5563;
+            line-height: 1.7;
+        }
+
+        /* Impact Section */
+        .impact {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #8B7FB0 0%, #E8B4C7 100%);
+            color: white;
+        }
+
+        .impact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .impact h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .impact-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .impact-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .impact-card p {
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* Get Involved Section */
+        .get-involved {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .involved-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .involved-content h2 {
+            font-size: 2.5rem;
+            color: #2E5B7A;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .involved-content p {
+            font-size: 1.15rem;
+            color: #4B5563;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .involved-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .involved-card {
+            background: #FAFAFA;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .involved-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .involved-card h3 {
+            color: #7FB069;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #1F2937;
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #7FB069;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section a {
+            color: #D1D5DB;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9CA3AF;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats-container {
+                gap: 2rem;
+            }
+
+            .mission h2, .focus-container h2, .impact h2, .involved-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-main">Safe Spaces Foundation</div>
+                <div class="logo-sub">A My Safe Spaces Initiative</div>
+            </div>
+            <div class="nav-links">
+                <a href="#mission">Mission</a>
+                <a href="#focus">Focus Areas</a>
+                <a href="#impact">Impact</a>
+                <a href="#involved">Get Involved</a>
+                <a href="https://mysafespaces.org" class="btn-primary">Visit My Safe Spaces</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Mental Health Is A Human Right</h1>
+            <p>Breaking barriers to mental wellness for underserved communities across India. Together, we're creating safe spaces where everyone can heal, grow, and thrive.</p>
+            <div class="hero-buttons">
+                <a href="#involved" class="btn-primary">Donate Now</a>
+                <a href="#focus" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>200M+</h3>
+                <p>Indians need mental health support</p>
+            </div>
+            <div class="stat-item">
+                <h3>90%</h3>
+                <p>Professional shortage gap</p>
+            </div>
+            <div class="stat-item">
+                <h3>10-15%</h3>
+                <p>Actually receive help</p>
+            </div>
+            <div class="stat-item">
+                <h3>₹86L Cr</h3>
+                <p>Economic impact by 2030</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="mission-content">
+            <h2>Our Mission</h2>
+            <p>Safe Spaces Foundation is dedicated to democratizing access to mental health care across India. We believe that quality mental wellness support should not be a privilege reserved for the few, but a fundamental right accessible to all.</p>
+            <p>Through innovative technology, culturally-sensitive approaches, and strategic partnerships, we're bridging the mental health gap in rural communities, underserved schools, small businesses, and marginalized populations.</p>
+            <p>As the charitable arm of My Safe Spaces, we leverage cutting-edge AI technology and evidence-based practices to provide free or subsidized mental health resources where they're needed most.</p>
+        </div>
+    </section>
+
+    <!-- Focus Areas -->
+    <section class="focus-areas" id="focus">
+        <div class="focus-container">
+            <h2>Where We Focus</h2>
+            <div class="focus-grid">
+                <div class="focus-card">
+                    <h3>Rural Communities</h3>
+                    <p>Bringing mental health awareness and support to India's villages where traditional stigma and lack of access create significant barriers to care.</p>
+                </div>
+                <div class="focus-card">
+                    <h3>Underserved Schools</h3>
+                    <p>Providing free mental wellness programs to government schools and institutions that lack resources for student counseling and support.</p>
+                </div>
+                <div class="focus-card">
+                    <h3>Small Businesses</h3>
+                    <p>Offering subsidized workplace wellness programs to small and medium enterprises that cannot afford comprehensive employee mental health benefits.</p>
+                </div>
+                <div class="focus-card">
+                    <h3>Marginalized Groups</h3>
+                    <p>Serving LGBTQ+ communities, women facing domestic challenges, and other vulnerable populations with culturally-competent, trauma-informed care.</p>
+                </div>
+                <div class="focus-card">
+                    <h3>Professional Training</h3>
+                    <p>Providing scholarships and reduced-cost PRISM certification to aspiring mental health professionals from underrepresented backgrounds.</p>
+                </div>
+                <div class="focus-card">
+                    <h3>Crisis Intervention</h3>
+                    <p>Operating 24/7 crisis support services and connecting individuals in acute distress with immediate professional help.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact" id="impact">
+        <div class="impact-content">
+            <h2>Our Impact</h2>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <h4>Free Access Programs</h4>
+                    <p>Providing completely free IntelliCare AI support and Journi journaling tools to verified underserved communities and individuals in need.</p>
+                </div>
+                <div class="impact-card">
+                    <h4>School Partnerships</h4>
+                    <p>Sponsoring My Safe Schools implementation in government and low-income private schools, reaching thousands of students annually.</p>
+                </div>
+                <div class="impact-card">
+                    <h4>Training Scholarships</h4>
+                    <p>Offering full and partial scholarships for PRISM professional certification to candidates from rural areas and marginalized backgrounds.</p>
+                </div>
+                <div class="impact-card">
+                    <h4>Community Outreach</h4>
+                    <p>Conducting mental health awareness campaigns, workshops, and screenings in underserved communities across India.</p>
+                </div>
+                <div class="impact-card">
+                    <h4>Research & Advocacy</h4>
+                    <p>Supporting research on mental health disparities and advocating for policy changes that improve mental health access nationwide.</p>
+                </div>
+                <div class="impact-card">
+                    <h4>Technology Innovation</h4>
+                    <p>Developing and maintaining AI-powered tools optimized for low-bandwidth areas and multiple Indian languages to maximize accessibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section class="get-involved" id="involved">
+        <div class="involved-content">
+            <h2>Get Involved</h2>
+            <p>Join us in our mission to make mental wellness accessible to every Indian, regardless of location, income, or background. Your support creates lasting change.</p>
+            
+            <div class="involved-cards">
+                <div class="involved-card">
+                    <h3>Donate</h3>
+                    <p>Your contribution directly funds free services, training scholarships, and community programs.</p>
+                </div>
+                <div class="involved-card">
+                    <h3>Partner</h3>
+                    <p>Corporate partnerships help us scale our impact and reach more underserved communities.</p>
+                </div>
+                <div class="involved-card">
+                    <h3>Volunteer</h3>
+                    <p>Mental health professionals can donate time for pro-bono counseling and community workshops.</p>
+                </div>
+                <div class="involved-card">
+                    <h3>Advocate</h3>
+                    <p>Help us reduce stigma and raise awareness about mental health in your community.</p>
+                </div>
+            </div>
+            
+            <a href="mailto:foundation@mysafespaces.org" class="btn-primary">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Safe Spaces Foundation</h4>
+                <p>A 501(c)(3) charitable organization<br>A My Safe Spaces Initiative</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#mission">Our Mission</a>
+                <a href="#focus">Focus Areas</a>
+                <a href="#impact">Our Impact</a>
+                <a href="#involved">Get Involved</a>
+            </div>
+            <div class="footer-section">
+                <h4>My Safe Spaces</h4>
+                <a href="https://mysafespaces.org">My Safe Spaces</a>
+                <a href="https://mysafespaces.org/schools">My Safe Schools</a>
+                <a href="https://mysafespaces.org/workspaces">My Safe Workspaces</a>
+                <a href="https://mysafespaces.org/sessions">My Safe Sessions</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <a href="mailto:foundation@mysafespaces.org">foundation@mysafespaces.org</a>
+                <a href="https://mysafespaces.org">www.mysafespaces.org</a>
+                <p style="margin-top: 1rem;">San Diego, California, USA</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Safe Spaces Foundation. All rights reserved. | <a href="#" style="display: inline; color: #9CA3AF;">Privacy Policy</a> | <a href="#" style="display: inline; color: #9CA3AF;">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
